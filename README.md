@@ -30,3 +30,11 @@ Once running, navigate to http://localhost:8080/.
   * [Spring Boot getting started guide](https://spring.io/guides/gs/spring-boot).
   * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/).
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
+
+### Next steps
+* Run dockerised wiremock instance with mocked JSON response of an external REST API.
+* Run the application and wiremock together in docker-compose.
+* Create a simple UI using Thymeleaf.
+* Render JSON of external API in "pretty print" in an iframe or similar on the UI.
+* Add basic auth to external API call.
+* Add PII to external API response JSON and obfuscate. 
