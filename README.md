@@ -17,7 +17,9 @@ Stateless frontend application used to call a series of external REST APIs and p
 
 **Docker** - `./gradlew build && docker build -t mveeprojects/java_sb_api_proxy . && docker run -d --name JavaSpringBootApiProxy -p 8080:8080 mveeprojects/java_sb_api_proxy`.
 
-**Note:** To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`. 
+**Note:**
+* Useful command to keep an eye on running docker containers `watch -n1 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'`
+* To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`. 
 
 Once running, navigate to http://localhost:8080/.
 
