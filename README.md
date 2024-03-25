@@ -33,6 +33,7 @@ Once running, navigate to http://localhost:8080/.
 
 ### Next steps
 * Run dockerised wiremock instance with mocked JSON response of an external REST API.
+* Add code to call the external API and print the JSON to the "/" endpoint.
 * Run the application and wiremock together in docker-compose.
 * Create a simple UI using Thymeleaf.
 * Render JSON of external API in "pretty print" in an iframe or similar on the UI.
