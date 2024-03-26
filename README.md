@@ -24,7 +24,7 @@ Stateless frontend application used to call a series of external REST APIs and p
 * To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`.
 
 **Docker Compose**
-* `./gradlew build && docker-compose down && docker rmi -f javaspringbootapiproxy-javaspringbootapiproxy && docker-compose up -d`
+* `./gradlew build && docker-compose down && docker rmi -f javaspringbootapiproxy-application && docker-compose up -d`
   
 Once running, the app will be available at localhost on port 80, wiremock will be available on port 8080.
 
