@@ -30,8 +30,26 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 ### Endpoints
 
-**API:**
-* Successful API request - http://localhost/proxy/mark
+**API:** http://localhost/proxy/mark
+```json
+[
+  {
+    name: "Mark",
+    role: "Developer",
+    organisation: {
+      company: "Sky",
+      department: "Global Commerce"
+    }
+  },
+  {
+    name: "Mark",
+    door_number: "748",
+    street: "Made Up Lane",
+    town: "Made up Street",
+    postcode: "AB12CD"
+  }
+]
+```
 
 **Wiremock:**
 * View all mappings: http://localhost:8080/__admin/mappings
