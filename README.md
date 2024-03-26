@@ -32,7 +32,7 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 **API:** http://localhost/proxy/mark
 
-Consolidates all proxied API responses for a given name (mark, see wiremock endpoints below) into a single JSON response.
+Consolidates all proxied API responses for a given name (mark, see wiremock endpoints below) into a JSON array.
 ```
 [
   {
@@ -53,10 +53,30 @@ Consolidates all proxied API responses for a given name (mark, see wiremock endp
 ]
 ```
 
-**Wiremock:**
-* View all mappings: http://localhost:8080/__admin/mappings
-* Example API response 1: http://localhost:8080/employee/mark
-* Example API response 2: http://localhost:8080/addresses/mark
+**Wiremock:** http://localhost:8080/__admin/mappings
+
+API response 1: http://localhost:8080/employee/mark
+```
+{
+  name: "Mark",
+  role: "Developer",
+  organisation: {
+    company: "Sky",
+    department: "Global Commerce"
+  }
+}
+```
+
+API response 2: http://localhost:8080/addresses/mark
+```
+{
+  name: "Mark",
+  door_number: "748",
+  street: "Made Up Lane",
+  town: "Made up Street",
+  postcode: "AB12CD"
+}
+```
 
 ### Sources
 * mveeprojects.wordpress
@@ -71,7 +91,7 @@ Consolidates all proxied API responses for a given name (mark, see wiremock endp
 ### Next steps
 * DONE ~~Run dockerised wiremock instance with mocked JSON response of an external REST API.~~
 * DONE ~~Run the application and wiremock together in docker-compose.~~
-* Add code to call the external API and print the JSON to the "/" endpoint.
+* DONE ~~Add code to call the external API and print the JSON to the "/" endpoint.~~
 * Create a simple UI using Thymeleaf.
 * Render JSON of external API in "pretty print" in an iframe or similar on the UI.
 * Add basic auth to external API call.
