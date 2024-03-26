@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  javaspringbootapiproxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: java-spring-boot-api-proxy
+    container_name: java-spring-boot-api-proxy
+    ports:
+      - 80:8080
+    restart: on-failure
+
+  wiremock:
+    image: wiremock/wiremock
+    ports:
+      - 8080:8080
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings

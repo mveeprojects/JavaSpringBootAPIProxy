@@ -11,17 +11,29 @@ Stateless frontend application used to call a series of external REST APIs and p
 
 ### Running the application
 
-**IntelliJ** - click run on the [Application class](./src/main/java/org/mveeprojects/Application.java).
+#### IntelliJ
+* Click run on the [Application class](./src/main/java/org/mveeprojects/Application.java).
 
-**Gradle Plugin** - `./gradlew bootRun`.
+#### Gradle Plugin
+* `./gradlew bootRun`.
 
-**Docker** - `./gradlew build && docker build -t mveeprojects/java_sb_api_proxy . && docker run -d --name JavaSpringBootApiProxy -p 8080:8080 mveeprojects/java_sb_api_proxy`.
-
-**Note:**
+**Docker**
+* Application: `./gradlew build && docker build -t mveeprojects/java_sb_api_proxy . && docker run -d --name JavaSpringBootApiProxy -p 80:8080 mveeprojects/java_sb_api_proxy`.
+* Wiremock: `docker run -d -p 8080:8080 --name wiremock -v ./wiremock/mappings:/home/wiremock/mappings wiremock/wiremock`
 * Useful command to keep an eye on running docker containers `watch -n1 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'`
-* To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`. 
+* To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`.
 
-Once running, navigate to http://localhost:8080/.
+**Docker Compose**
+* `./gradlew build && docker-compose up -d`
+
+Once running, the app will be available at localhost on port 80, wiremock will be available on port 8080.
+
+### Endpoints
+
+**Wiremock:**
+* View all mappings: http://localhost:8080/__admin/mappings
+* Example API response 1: http://localhost:8080/employee/mark
+* Example API response 2: http://localhost:8080/customer/sally
 
 ### Sources
 * mveeprojects.wordpress
@@ -32,9 +44,9 @@ Once running, navigate to http://localhost:8080/.
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
 
 ### Next steps
-* Run dockerised wiremock instance with mocked JSON response of an external REST API.
+* DONE ~~Run dockerised wiremock instance with mocked JSON response of an external REST API.~~
+* DONE ~~Run the application and wiremock together in docker-compose.~~
 * Add code to call the external API and print the JSON to the "/" endpoint.
-* Run the application and wiremock together in docker-compose.
 * Create a simple UI using Thymeleaf.
 * Render JSON of external API in "pretty print" in an iframe or similar on the UI.
 * Add basic auth to external API call.

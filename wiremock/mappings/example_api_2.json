@@ -1,0 +1,14 @@
+{
+  "name": "Example API Response 2",
+  "request": {
+    "urlPath": "/customer/sally",
+    "method": "GET"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "name": "Sally",
+      "subscription_tier": "Premium"
+    }
+  }
+}
