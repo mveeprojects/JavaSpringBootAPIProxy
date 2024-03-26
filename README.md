@@ -89,10 +89,10 @@ API response 2: http://localhost:8080/addresses/mark
   * https://www.baeldung.com/java-9-http-client
 
 ### Next steps
-* DONE ~~Run dockerised wiremock instance with mocked JSON response of an external REST API.~~
-* DONE ~~Run the application and wiremock together in docker-compose.~~
-* DONE ~~Add code to call the external API and print the JSON to the "/" endpoint.~~
-* Create a simple UI using Thymeleaf.
-* Render JSON of external API in "pretty print" in an iframe or similar on the UI.
-* Add basic auth to external API call.
-* Add PII to external API response JSON and obfuscate. 
+-[x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
+-[x] Run the application and wiremock together in docker-compose.
+-[x] Add code to call the external API and print the JSON to the "/" endpoint.
+-[ ] Create a simple UI using Thymeleaf.
+-[ ] Render JSON of external API in "pretty print" in an iframe or similar on the UI.
+-[ ] Add basic auth to external API call. 
+-[ ] Add PII to external API response JSON and obfuscate. 
