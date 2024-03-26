@@ -1,5 +1,5 @@
 {
-  "name": "Example API Response 1",
+  "name": "Employee Info API Response",
   "request": {
     "urlPath": "/employee/mark",
     "method": "GET"

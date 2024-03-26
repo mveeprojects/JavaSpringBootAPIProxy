@@ -24,8 +24,8 @@ Stateless frontend application used to call a series of external REST APIs and p
 * To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`.
 
 **Docker Compose**
-* `./gradlew build && docker-compose up -d`
-
+* `./gradlew build && docker-compose down && docker rmi -f javespringbootapiproxy-javaspringbootapiproxy && docker-compose up -d`
+  
 Once running, the app will be available at localhost on port 80, wiremock will be available on port 8080.
 
 ### Endpoints
@@ -42,6 +42,8 @@ Once running, the app will be available at localhost on port 80, wiremock will b
   * [Spring Boot getting started guide](https://spring.io/guides/gs/spring-boot).
   * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/).
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
+* Java HTTP Client
+  * https://www.baeldung.com/java-9-http-client
 
 ### Next steps
 * DONE ~~Run dockerised wiremock instance with mocked JSON response of an external REST API.~~

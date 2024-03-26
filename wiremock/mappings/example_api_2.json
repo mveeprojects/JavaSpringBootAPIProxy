@@ -1,14 +1,17 @@
 {
-  "name": "Example API Response 2",
+  "name": "Address Book API Response",
   "request": {
-    "urlPath": "/customer/sally",
+    "urlPath": "/addresses/mark",
     "method": "GET"
   },
   "response": {
     "status": 200,
     "jsonBody": {
-      "name": "Sally",
-      "subscription_tier": "Premium"
+      "name": "Mark",
+      "door_number": "748",
+      "street": "Made Up Lane",
+      "town": "Made up Street",
+      "postcode": "AB12CD"
     }
   }
 }
