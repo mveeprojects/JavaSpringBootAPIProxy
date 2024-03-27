@@ -30,6 +30,8 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 ### Endpoints
 
+**UI/index:** http://localhost/
+
 **API:** http://localhost/proxy/mark
 
 Consolidates all proxied API responses for a given name (mark, see wiremock endpoints below) into a JSON array.
