@@ -37,8 +37,6 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 Returns all proxied API responses for a given name (mark, see wiremock endpoints below) to the frontend, as shown below.
 
-[//]: # (![Example]&#40;images/info_endpoint_example.png&#41;)
-
 <img src="images/info_endpoint_example.png" alt="info_endpoint_example.png" width="250"/>
 
 **Wiremock:** http://localhost:8080/__admin/mappings
