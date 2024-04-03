@@ -1,6 +1,6 @@
 # Java Spring Boot API Proxy
 
-Stateless frontend application used to call a series of external REST APIs and present the result back to the user.
+Stateless UI/Proxy application used to call a series of external REST APIs and present the result back to the user.
 
 ### Tech stack
 * Java 21
@@ -83,6 +83,8 @@ API response 2: http://localhost:8080/addresses/mark
 - [x] Run the application and wiremock together in docker-compose.
 - [x] Add code to call the external API and send the JSON to the frontend.
 - [ ] Create a simple UI using Thymeleaf.
+  - [ ] Text box and button for user input instead of path variables on frontend.
+  - [ ] Handle 404s gracefully.
 - [ ] Render JSON of external API in "pretty print" in an iframe or similar on the UI.
 - [ ] Add equivalent curl (without auth) to the UI.
 - [ ] Add basic auth to external API call.
