@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmins:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8"/>
     <title th:text="${title}"></title>
 </head>
 
 <body>
-    <h2 th:text="${content}"></h2>
+
+<h2 th:text="${content_heading}"></h2>
+<hr>
+<h4>Employee API</h4>
+<p th:text=${apiresponse1}  style="white-space: pre"></p>
+<hr>
+<h4>Addresses API</h4>
+<p th:text=${apiresponse2}  style="white-space: pre"></p>
+<hr>
+
 </body>
 </html>

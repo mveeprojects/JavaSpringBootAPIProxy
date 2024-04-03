@@ -11,42 +11,35 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Service
 public class ProxyService {
 
-    public JsonNode apiResponses(String name) {
+    public JsonNode apiResponse(String path, String name) {
         HttpClient client = HttpClient.newHttpClient();
-        List<URI> targets = generateTargets(name);
-        List<String> responses = callTargets(client, targets);
-        return prettyJson(responses);
+        URI uri = generateTarget(path, name);
+        String jsonResponse = getResponse(client, uri);
+        return prettyJson(jsonResponse);
     }
 
-    private List<String> callTargets(HttpClient client, List<URI> targets) {
-        return targets.stream()
-                .map(target ->
-                        {
-                            try {
-                                return client.sendAsync(buildRequest(target), HttpResponse.BodyHandlers.ofString())
-                                        .thenApply(HttpResponse::body).get();
-                            } catch (InterruptedException | ExecutionException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-                ).collect(Collectors.toList());
-    }
-
-    private List<URI> generateTargets(String name) {
+    private String getResponse(HttpClient client, URI uri) {
         try {
-            return Arrays.asList(
-                    new URI("http://wiremock:8080/employee/" + name),
-                    new URI("http://wiremock:8080/addresses/" + name));
+            return client.sendAsync(buildRequest(uri), HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body).get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private URI generateTarget(String path, String name) {
+
+        String prefix = "http://wiremock:8080/";
+
+        try {
+            return new URI(prefix + path + "/" + name);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -60,10 +53,10 @@ public class ProxyService {
                 .build();
     }
 
-    private JsonNode prettyJson(List<String> responses) {
+    private JsonNode prettyJson(String jsonResponse) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readTree(responses.toString());
+            return mapper.readTree(jsonResponse);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
