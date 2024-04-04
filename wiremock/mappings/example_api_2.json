@@ -1,17 +1,21 @@
 {
-  "name": "Address Book API Response",
+  "name": "Customer History API",
   "request": {
-    "urlPath": "/addresses/mark",
+    "urlPath": "/customer/history/abc",
     "method": "GET"
   },
   "response": {
     "status": 200,
     "jsonBody": {
-      "name": "Mark",
-      "door_number": "748",
-      "street": "Made Up Lane",
-      "town": "Made up Street",
-      "postcode": "AB12CD"
+      "customer_id": "abc",
+      "history": [
+        {
+          "title": "War & Peace"
+        },
+        {
+          "title": "The Beano"
+        }
+      ]
     }
   }
 }

@@ -2,6 +2,12 @@
 
 Stateless UI/Proxy application used to call a series of external REST APIs and present the result back to the user.
 
+[//]: # (
+Better concept - library system:
+- API for customer account information; customer_id, name, etc.
+- API for info on history of books borrowed by a given customer
+)
+
 ### Tech stack
 * Java 21
 * Spring Boot
@@ -31,38 +37,17 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 ### Endpoints
 
-**UI/index:** http://localhost/
+**Customer Summary Frontend:** http://localhost/customer/summary/abc<customer_id>
 
-**API:** http://localhost/info/<name>
+Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
-Returns all proxied API responses for a given name (mark, see wiremock endpoints below) to the frontend, as shown below.
-
-<img src="images/info_endpoint_example.png" alt="info_endpoint_example.png" width="250"/>
+<img src="images/library_sumary_endpoint.png" alt="library_sumary_endpoint.png" width="250"/>
 
 **Wiremock:** http://localhost:8080/__admin/mappings
 
-API response 1: http://localhost:8080/employee/mark
-```
-{
-  name: "Mark",
-  role: "Developer",
-  organisation: {
-    company: "Sky",
-    department: "Global Commerce"
-  }
-}
-```
+API response 1: http://localhost:8080/customer/info/abc
 
-API response 2: http://localhost:8080/addresses/mark
-```
-{
-  name: "Mark",
-  door_number: "748",
-  street: "Made Up Lane",
-  town: "Made up Street",
-  postcode: "AB12CD"
-}
-```
+API response 2: http://localhost:8080/customer/history/abc
 
 ### Sources
 * mveeprojects.wordpress

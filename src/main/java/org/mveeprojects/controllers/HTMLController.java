@@ -9,25 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.*;
-
 @Controller
 public class HTMLController {
 
     @Autowired
     private ProxyService proxyService;
 
-    @RequestMapping("/info/{name}")
-    public String indexController(@PathVariable String name, Model model) {
+    @RequestMapping("customer/summary/{id}")
+    public String indexController(@PathVariable String id, Model model) {
         ObjectMapper mapper = new ObjectMapper();
         model.addAttribute("title", "indexController");
-        model.addAttribute("content_heading", "API results for: " + name);
+        model.addAttribute("content_heading", "Library API results for id #" + id);
 
-        JsonNode employeeJsonResponse = proxyService.apiResponse("employee", name);
-        JsonNode addressesJsonResponse = proxyService.apiResponse("addresses", name);
+        JsonNode customerInfo = proxyService.apiResponse("customer/info", id);
+        JsonNode customerHistory = proxyService.apiResponse("customer/history", id);
 
-        model.addAttribute("apiresponse1", employeeJsonResponse.toPrettyString());
-        model.addAttribute("apiresponse2", addressesJsonResponse.toPrettyString());
+        model.addAttribute("customerInfo", customerInfo.toPrettyString());
+        model.addAttribute("customerHistory", customerHistory.toPrettyString());
         return "index";
     }
 }

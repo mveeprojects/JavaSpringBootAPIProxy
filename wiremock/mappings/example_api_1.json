@@ -1,17 +1,17 @@
 {
-  "name": "Employee Info API Response",
+  "name": "Customer Info API",
   "request": {
-    "urlPath": "/employee/mark",
+    "urlPath": "/customer/info/abc",
     "method": "GET"
   },
   "response": {
     "status": 200,
     "jsonBody": {
+      "customer_id": "abc",
       "name": "Mark",
-      "role": "Developer",
-      "organisation": {
-        "company": "Sky",
-        "department": "Global Commerce"
+      "contact_info": {
+        "email": "mark@mveeprojects.com",
+        "phone": "1234"
       }
     }
   }
