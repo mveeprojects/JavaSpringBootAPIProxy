@@ -12,12 +12,6 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 ### Running the application
 
-#### IntelliJ
-* Click run on the [Application class](./src/main/java/org/mveeprojects/Application.java).
-
-#### Gradle Plugin
-* `./gradlew bootRun`.
-
 **Docker**
 * Application: `./gradlew build && docker build -t mveeprojects/java_sb_api_proxy . && docker run -d --name JavaSpringBootApiProxy -p 80:8080 mveeprojects/java_sb_api_proxy`.
 * Wiremock: `docker run -d -p 8080:8080 --name wiremock -v ./wiremock/mappings:/home/wiremock/mappings wiremock/wiremock`.
@@ -26,7 +20,7 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 **Docker Compose**
 * `./gradlew build && docker-compose down && docker rmi -f javaspringbootapiproxy-application && docker-compose up -d`.
-* an executable script has been written to cover this, run `./startup.sh` for convenience.
+* An executable script has been written for convenience, run `./startup.sh` from the root of the project to stop and start the application and wiremock.
   
 Once running, the app will be available at localhost on port 80, wiremock will be available on port 8080.
 
