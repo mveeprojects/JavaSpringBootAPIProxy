@@ -61,7 +61,7 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * Miscellaneous
   * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf) 
 
-### Next steps
+### Todo:
 * [x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
 * [x] Run the application and wiremock together in docker-compose.
 * [x] Add code to call the external API and send the JSON to the frontend.
