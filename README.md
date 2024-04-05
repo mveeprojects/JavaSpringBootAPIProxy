@@ -42,12 +42,12 @@ Returns all proxied API responses for a given customer_id ("abc", see wiremock e
 
 Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) directory.
 
-- View all mappings
-  - http://localhost:8080/__admin/mappings
-- API for customer account information; customer_id, name, etc. (customer_id "abc")
-  - http://localhost:8080/customer/info/abc
-- API for info on history of books borrowed by a given customer (customer_id "abc")
-  - http://localhost:8080/customer/history/abc
+* View all mappings
+  * http://localhost:8080/__admin/mappings
+* API for customer account information; customer_id, name, etc. (customer_id "abc")
+  * http://localhost:8080/customer/info/abc
+* API for info on history of books borrowed by a given customer (customer_id "abc")
+  * http://localhost:8080/customer/history/abc
 
 ### Sources
 * mveeprojects.wordpress
@@ -62,13 +62,13 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf) 
 
 ### Next steps
-- [x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
-- [x] Run the application and wiremock together in docker-compose.
-- [x] Add code to call the external API and send the JSON to the frontend.
-- [ ] Create a simple UI using Thymeleaf.
-  - [ ] Text box and button for user input instead of path variables on frontend.
-  - [ ] Handle 404s gracefully.
-- [ ] Render JSON of external API in "pretty print" in an iframe or similar on the UI.
-- [ ] Add equivalent curl (without auth) to the UI.
-- [ ] Add basic auth to external API call.
-- [ ] Add PII to external API response JSON and obfuscate. 
+* [x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
+* [x] Run the application and wiremock together in docker-compose.
+* [x] Add code to call the external API and send the JSON to the frontend.
+* [x] Render JSON of external API in "pretty print".
+* [ ] Create a simple UI using Thymeleaf.
+  * [ ] Text box and button for user input instead of path variables on frontend.
+  * [ ] Handle errors gracefully (400, 401, 404 etc.).
+* [ ] Add equivalent curl (without auth) to the UI.
+* [ ] Add basic auth to external API call.
+* [ ] Add PII to external API response JSON and obfuscate before sending in response to the frontend. 
