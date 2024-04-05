@@ -2,12 +2,6 @@
 
 Stateless UI/Proxy application used to call a series of external REST APIs and present the result back to the user.
 
-[//]: # (
-Better concept - library system:
-- API for customer account information; customer_id, name, etc.
-- API for info on history of books borrowed by a given customer
-)
-
 ### Tech stack
 * Java 21
 * Spring Boot
@@ -43,11 +37,16 @@ Returns all proxied API responses for a given customer_id ("abc", see wiremock e
 
 <img src="images/library_sumary_endpoint.png" alt="library_sumary_endpoint.png" width="250"/>
 
-**Wiremock:** http://localhost:8080/__admin/mappings
+### Wiremock
 
-API response 1: http://localhost:8080/customer/info/abc
+Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) directory.
 
-API response 2: http://localhost:8080/customer/history/abc
+- View all mappings
+  - http://localhost:8080/__admin/mappings
+- API for customer account information; customer_id, name, etc. (customer_id "abc")
+  - http://localhost:8080/customer/info/abc
+- API for info on history of books borrowed by a given customer (customer_id "abc")
+  - http://localhost:8080/customer/history/abc
 
 ### Sources
 * mveeprojects.wordpress
