@@ -30,7 +30,7 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
-<img src="images/library_sumary_endpoint.png" alt="library_sumary_endpoint.png" width="250"/>
+<img src="images/library_sumary_endpoint.png" alt="library_sumary_endpoint.png" width="300"/>
 
 ### Wiremock
 
