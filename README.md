@@ -26,7 +26,10 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 ### Endpoints
 
-**Customer Summary Frontend:** http://localhost/customer/summary/abc<customer_id>
+**Customer Summary Frontend (index.html):** 
+
+Example call with `customer_id` "abc":
+* http://localhost/customer/summary/abc.
 
 Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
