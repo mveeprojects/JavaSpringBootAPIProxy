@@ -4,6 +4,7 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 ### Tech stack
 * Java 21
+* Gradle 8
 * Spring Boot
 * Thymeleaf
 * Docker
