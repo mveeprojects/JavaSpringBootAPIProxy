@@ -70,7 +70,7 @@ Must-haves:
 * [x] Run the application and wiremock together in docker-compose.
 * [x] Add code to call the external API and send the JSON to the frontend.
 * [x] Render JSON of external API in "pretty print".
-* [x] Handle errors gracefully (400 etc.).
+* [x] Handle errors gracefully (404 etc.).
 * [ ] Move hardcoded references to wiremock url etc and setup overridable config.
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
