@@ -7,6 +7,7 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 * Gradle 8
 * Spring Boot
 * Thymeleaf
+* Jackson
 * Docker
 * Wiremock
 
@@ -69,8 +70,7 @@ Must-haves:
 * [x] Run the application and wiremock together in docker-compose.
 * [x] Add code to call the external API and send the JSON to the frontend.
 * [x] Render JSON of external API in "pretty print".
-* [ ] Handle errors gracefully (400, 401, 404 etc.).
-  * [x] Errors from downstream APIs returns empty JSON.
+* [x] Handle errors gracefully (400 etc.).
 * [ ] Move hardcoded references to wiremock url etc and setup overridable config.
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
