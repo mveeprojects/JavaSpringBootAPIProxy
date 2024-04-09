@@ -1,8 +1,12 @@
 package org.mveeprojects.services;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.mveeprojects.model.ConnectionIssue;
+import org.mveeprojects.model.HttpResult;
+import org.mveeprojects.model.NotFound;
+import org.mveeprojects.model.TwoHundred;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -11,27 +15,45 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.CompletableFuture;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Service
 public class ProxyService {
 
-    public JsonNode apiResponse(String path, String name) {
+    public JsonNode apiResponse(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
-        URI uri = generateTarget(path, name);
-        String jsonResponse = getResponse(client, uri);
-        return prettyJson(jsonResponse);
+        URI uri = generateTarget(path, id);
+        HttpResult httpResult = getResponse(client, uri, id);
+        return buildJson(httpResult);
     }
 
-    private String getResponse(HttpClient client, URI uri) {
+    private HttpResult getResponse(HttpClient client, URI uri, String id) {
+
+        String body;
+        int statusCode = 0;
+
         try {
-            return client.sendAsync(buildRequest(uri), HttpResponse.BodyHandlers.ofString())
-                    .thenApply(HttpResponse::body).get();
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
+            CompletableFuture<HttpResponse<String>> httpResponseCompletableFuture = client.sendAsync(buildRequest(uri), HttpResponse.BodyHandlers.ofString());
+            body = httpResponseCompletableFuture.thenApply(HttpResponse::body).get();
+            statusCode = httpResponseCompletableFuture.thenApply(HttpResponse::statusCode).get();
+            return checkHttpResponse(statusCode, id, body);
+        } catch (Exception e) {
+            return checkHttpResponse(statusCode, id);
         }
+    }
+
+    private HttpResult checkHttpResponse(int statusCode, String id) {
+        return checkHttpResponse(statusCode, id, "");
+    }
+
+    private HttpResult checkHttpResponse(int statusCode, String id, String body) {
+        return switch (statusCode) {
+            case 200 -> new TwoHundred(id, body);
+            case 404 -> new NotFound(id);
+            default -> new ConnectionIssue(id);
+        };
     }
 
     private URI generateTarget(String path, String name) {
@@ -53,12 +75,20 @@ public class ProxyService {
                 .build();
     }
 
-    private JsonNode prettyJson(String jsonResponse) {
+    private JsonNode buildJson(HttpResult httpResult) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readTree(jsonResponse);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            ObjectNode rootNode = mapper.createObjectNode();
+            JsonNode responseBody = mapper.readTree(httpResult.getResponseBody());
+            rootNode.put("status_code", httpResult.getStatusCode());
+            rootNode.put("customer_id", httpResult.getCustomerId());
+            rootNode.set("response_body", responseBody);
+            return rootNode;
+        } catch (Exception e) {
+            ObjectNode rootNode = mapper.createObjectNode();
+            rootNode.put("customer_code", httpResult.getCustomerId());
+            rootNode.put("status_code", httpResult.getStatusCode());
+            return rootNode;
         }
     }
 }

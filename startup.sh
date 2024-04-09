@@ -15,3 +15,5 @@ echo "Startup complete."
 sleep 1
 
 docker ps -a
+
+echo "http://localhost/customer/summary/abc"

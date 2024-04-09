@@ -33,7 +33,8 @@ Example call with `customer_id` "abc":
 
 Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
-<img src="images/library_sumary_endpoint.png" alt="library_sumary_endpoint.png" width="450"/>
+<img src="images/library_summary_endpoint_200.png" alt="library_summary_endpoint_200.png" width="450"/>
+<img src="images/library_summary_endpoint_404.png" alt="library_summary_endpoint_404.png" width="450"/>
 
 ### Wiremock
 
@@ -56,7 +57,8 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * Java HTTP Client
   * https://www.baeldung.com/java-9-http-client
 * Miscellaneous
-  * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf) 
+  * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf)
+  * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java)
 
 ### Todo
 
@@ -65,10 +67,12 @@ Must-haves:
 * [x] Run the application and wiremock together in docker-compose.
 * [x] Add code to call the external API and send the JSON to the frontend.
 * [x] Render JSON of external API in "pretty print".
+* [ ] Handle errors gracefully (400, 401, 404 etc.).
+  * [x] Errors from downstream APIs returns empty JSON.
+* [ ] Move hardcoded references to wiremock url etc and setup overridable config.
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
   * [ ] Text box and button for user input instead of path variables on frontend.
-  * [ ] Handle errors gracefully (400, 401, 404 etc.).
 * [ ] Add PII to external API response JSON and obfuscate before sending in response to the frontend.
 
 Nice-to-haves:
