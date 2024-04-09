@@ -3,6 +3,7 @@ package org.mveeprojects.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 import org.mveeprojects.model.ConnectionIssue;
 import org.mveeprojects.model.HttpResult;
 import org.mveeprojects.model.NotFound;
@@ -80,6 +81,14 @@ public class ProxyService {
         try {
             ObjectNode rootNode = mapper.createObjectNode();
             JsonNode responseBody = mapper.readTree(httpResult.getResponseBody());
+
+            if (responseBody.findValue("email") != null) {
+                JsonNode contactInfoNode = responseBody.path("contact_info");
+                ((ObjectNode) contactInfoNode).set("email", new TextNode("************"));
+                String updatedJson = mapper.writeValueAsString(responseBody);
+                responseBody = mapper.readTree(updatedJson);
+            }
+
             rootNode.put("status_code", httpResult.getStatusCode());
             rootNode.put("customer_id", httpResult.getCustomerId());
             rootNode.set("response_body", responseBody);

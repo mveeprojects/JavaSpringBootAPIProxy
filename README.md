@@ -59,6 +59,8 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
 * Java HTTP Client
   * https://www.baeldung.com/java-9-http-client
+* Baeldung
+  * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements)
 * Miscellaneous
   * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf)
   * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java)
@@ -75,7 +77,7 @@ Must-haves:
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
   * [ ] Text box and button for user input instead of path variables on frontend.
-* [ ] Add PII to external API response JSON and obfuscate before sending in response to the frontend.
+* [x] Add email to external API response JSON and obfuscate before sending in response to the frontend.
 
 Nice-to-haves:
 * [ ] Add equivalent curl (without auth) to the UI.
