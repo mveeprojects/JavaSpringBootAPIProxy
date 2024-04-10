@@ -34,10 +34,13 @@ Example call with `customer_id` "abc":
 
 Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
+<img src="images/index.png" alt="index.png" width="500"/>
+<br>
+<img src="images/abc_result.png" alt="abc_result.png" width="500"/>
+
 If the given customer_id ("blah" in the example below) does not exist or cannot be returned for any other reason, this is handled and represented in the response.
 
-<img src="images/library_summary_endpoint_200.png" alt="library_summary_endpoint_200.png" width="500"/>
-<img src="images/library_summary_endpoint_404.png" alt="library_summary_endpoint_404.png" width="500"/>
+<img src="images/blah_result.png" alt="blah_result.png" width="500"/>
 
 ### Wiremock
 
@@ -57,6 +60,8 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [Spring Boot getting started guide](https://spring.io/guides/gs/spring-boot).
   * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/).
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
+* ThymeLeaf.org
+  * [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form) 
 * Java HTTP Client
   * https://www.baeldung.com/java-9-http-client
 * Baeldung
@@ -64,6 +69,7 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * Miscellaneous
   * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf)
   * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java)
+  * [SO: Search (via text field and button) in Spring MVC, CrudRepository, Thymeleaf](https://stackoverflow.com/questions/41314724/search-via-text-field-and-button-in-spring-mvc-crudrepository-thymeleaf)
 
 ### Todo
 
@@ -76,7 +82,8 @@ Must-haves:
 * [ ] Move hardcoded references to wiremock url etc and setup overridable config.
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
-  * [ ] Text box and button for user input instead of path variables on frontend.
+  * [x] Form and button for inputting criteria to search by.
+  * [ ] UI needs to be a bit prettier.
 * [x] Add email to external API response JSON and obfuscate before sending in response to the frontend.
 
 Nice-to-haves:

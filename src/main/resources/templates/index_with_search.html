@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<div class="container">
+
+    <h2>Search for customer</h2>
+    <form th:object="${httpresult}" th:action="@{/customer/summary}" method="get">
+        <input type="text" name="search" id="search"/>
+        <input type="submit" value="Search"/>
+        <div th:if="${not #lists.isEmpty(search)}">
+            <h2>Customer Info</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Status Code</th>
+                    <th>Customer ID</th>
+                    <th>Response Body</th>
+                </tr>
+                <tr th:each="httpresult: ${search}">
+                    <td th:text="${httpresult.statusCode}">status code</td>
+                    <td th:text="${httpresult.customerId}">customer id</td>
+                    <td th:text="${httpresult.responseBody}" style="white-space: pre">response body</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>

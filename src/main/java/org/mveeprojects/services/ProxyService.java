@@ -23,11 +23,11 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Service
 public class ProxyService {
 
-    public JsonNode apiResponse(String path, String id) {
+    public HttpResult apiResponse(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
         URI uri = generateTarget(path, id);
         HttpResult httpResult = getResponse(client, uri, id);
-        return buildJson(httpResult);
+        return checkAndObfuscate(httpResult);
     }
 
     private HttpResult getResponse(HttpClient client, URI uri, String id) {
@@ -76,10 +76,9 @@ public class ProxyService {
                 .build();
     }
 
-    private JsonNode buildJson(HttpResult httpResult) {
+    private HttpResult checkAndObfuscate(HttpResult httpResult) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            ObjectNode rootNode = mapper.createObjectNode();
             JsonNode responseBody = mapper.readTree(httpResult.getResponseBody());
 
             if (responseBody.findValue("email") != null) {
@@ -89,15 +88,10 @@ public class ProxyService {
                 responseBody = mapper.readTree(updatedJson);
             }
 
-            rootNode.put("status_code", httpResult.getStatusCode());
-            rootNode.put("customer_id", httpResult.getCustomerId());
-            rootNode.set("response_body", responseBody);
-            return rootNode;
+            httpResult.setResponseBody(responseBody.toPrettyString());
+            return httpResult;
         } catch (Exception e) {
-            ObjectNode rootNode = mapper.createObjectNode();
-            rootNode.put("customer_id", httpResult.getCustomerId());
-            rootNode.put("status_code", httpResult.getStatusCode());
-            return rootNode;
+            return httpResult;
         }
     }
 }
