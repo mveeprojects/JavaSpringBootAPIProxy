@@ -36,8 +36,8 @@ Returns all proxied API responses for a given customer_id ("abc", see wiremock e
 
 If the given customer_id ("blah" in the example below) does not exist or cannot be returned for any other reason, this is handled and represented in the response.
 
-<img src="images/library_summary_endpoint_200.png" alt="library_summary_endpoint_200.png" width="250"/>
-<img src="images/library_summary_endpoint_404.png" alt="library_summary_endpoint_404.png" width="250"/>
+<img src="images/library_summary_endpoint_200.png" alt="library_summary_endpoint_200.png" width="450"/>
+<img src="images/library_summary_endpoint_404.png" alt="library_summary_endpoint_404.png" width="450"/>
 
 ### Wiremock
 
