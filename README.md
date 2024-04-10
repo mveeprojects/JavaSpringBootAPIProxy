@@ -85,7 +85,7 @@ Must-haves:
 * [x] Add code to call the external API and send the JSON to the frontend.
 * [x] Render JSON of external API in "pretty print".
 * [x] Handle errors gracefully (404 etc.).
-* [ ] Move hardcoded references to wiremock url etc and setup overridable config.
+* [x] Move hardcoded references to wiremock url etc and setup overridable config.
 * [ ] Add basic auth to external API call.
 * [ ] Create a simple UI using Thymeleaf.
   * [x] Form and button for inputting criteria to search by.

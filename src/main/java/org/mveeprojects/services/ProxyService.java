@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
+import org.mveeprojects.config.DownstreamConfig;
 import org.mveeprojects.model.ConnectionIssue;
 import org.mveeprojects.model.HttpResult;
 import org.mveeprojects.model.NotFound;
 import org.mveeprojects.model.TwoHundred;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -22,6 +24,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 @Service
 public class ProxyService {
+
+    @Autowired
+    DownstreamConfig downstreamConfig;
 
     public HttpResult apiResponse(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
@@ -57,12 +62,12 @@ public class ProxyService {
         };
     }
 
-    private URI generateTarget(String path, String name) {
+    private URI generateTarget(String path, String id) {
 
-        String prefix = "http://wiremock:8080/";
+        String prefix = downstreamConfig.getApiHostname(path) + ":" + downstreamConfig.getApiPort(path) + "/";
 
         try {
-            return new URI(prefix + path + "/" + name);
+            return new URI(prefix + path + "/" + id);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
