@@ -95,7 +95,7 @@ public class ProxyService {
             return rootNode;
         } catch (Exception e) {
             ObjectNode rootNode = mapper.createObjectNode();
-            rootNode.put("customer_code", httpResult.getCustomerId());
+            rootNode.put("customer_id", httpResult.getCustomerId());
             rootNode.put("status_code", httpResult.getStatusCode());
             return rootNode;
         }
