@@ -26,4 +26,12 @@ public abstract class HttpResult {
     public void setResponseBody(String responseBody) {
         this.responseBody = responseBody;
     }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
 }

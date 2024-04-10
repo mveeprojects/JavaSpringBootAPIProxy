@@ -19,9 +19,9 @@
                     <th>Response Body</th>
                 </tr>
                 <tr th:each="httpresult: ${search}">
-                    <td th:text="${httpresult.statusCode}">status code</td>
-                    <td th:text="${httpresult.customerId}">customer id</td>
-                    <td th:text="${httpresult.responseBody}" style="white-space: pre">response body</td>
+                    <td th:text="${httpresult.getStatusCode}">status code</td>
+                    <td th:text="${httpresult.getCustomerId}">customer id</td>
+                    <td th:text="${httpresult.getResponseBody}" style="white-space: pre">response body</td>
                 </tr>
             </table>
         </div>
