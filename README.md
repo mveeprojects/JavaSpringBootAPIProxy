@@ -34,17 +34,19 @@ Example call with `customer_id` "abc":
 
 Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
 
-<div style="text-align:center;">
+<p align="center" width="100%">
   <img src="images/index.png" alt="index.png" width="500"/>
   <br>
   <img src="images/abc_result.png" alt="abc_result.png" width="500"/>
-</div>
+  <br>
+</p>
 
 If the given customer_id ("blah" in the example below) does not exist or cannot be returned for any other reason, this is handled and represented in the response.
 
-<div style="text-align:center;">
+<p align="center" width="100%">
   <img src="images/blah_result.png" alt="blah_result.png" width="500"/>
-</div>
+  <br>
+</p>
 
 ### Wiremock
 
