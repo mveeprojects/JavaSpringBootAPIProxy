@@ -29,24 +29,28 @@ Once running, the app will be available at localhost on port 80, wiremock will b
 
 **Customer Summary Frontend (index.html):** 
 
-Example call with `customer_id` "abc":
-* http://localhost/customer/summary/abc.
+The default search view of index.html is loaded by accessing http://localhost:80/ (http://localhost/).
 
-Returns all proxied API responses for a given customer_id ("abc", see wiremock endpoints below) to the frontend, as shown below.
+Entering a customer id into the search box and clicking search adds the path and query param as shown below.
 
-<p align="center" width="100%">
-  <img src="images/index.png" alt="index.png" width="500"/>
-  <br>
-  <img src="images/abc_result.png" alt="abc_result.png" width="500"/>
-  <br>
-</p>
+Example call with `customer_id` "abc" -> http://localhost/customer/summary?search=abc.
 
-If the given customer_id ("blah" in the example below) does not exist or cannot be returned for any other reason, this is handled and represented in the response.
-
-<p align="center" width="100%">
-  <img src="images/blah_result.png" alt="blah_result.png" width="500"/>
-  <br>
-</p>
+[//]: # (Add images to the readme when the frontend is complete.)
+[//]: # (Returns all proxied API responses for a given customer_id &#40;"abc", see wiremock endpoints below&#41; to the frontend.)
+[//]: # ()
+[//]: # (<p align="center" width="100%">)
+[//]: # (  <img src="images/index.png" alt="index.png" width="500"/>)
+[//]: # (  <br>)
+[//]: # (  <img src="images/abc_result.png" alt="abc_result.png" width="500"/>)
+[//]: # (  <br>)
+[//]: # (</p>)
+[//]: # ()
+[//]: # (If the given customer_id &#40;"blah" in the example below&#41; does not exist or cannot be returned for any other reason, this is handled and represented in the response.)
+[//]: # ()
+[//]: # (<p align="center" width="100%">)
+[//]: # (  <img src="images/blah_result.png" alt="blah_result.png" width="500"/>)
+[//]: # (  <br>)
+[//]: # (</p>)
 
 ### Wiremock
 
@@ -65,17 +69,20 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * Spring.io
   * [Spring Boot getting started guide](https://spring.io/guides/gs/spring-boot).
   * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/).
-  * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker)
+  * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker).
 * ThymeLeaf.org
-  * [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form) 
-* Java HTTP Client
-  * https://www.baeldung.com/java-9-http-client
+  * [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form).
 * Baeldung
-  * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements)
+  * [Java HTTP Client](https://www.baeldung.com/java-9-http-client).
+  * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements).
+  * [Add CSS and JS to Thymeleaf](https://www.baeldung.com/spring-thymeleaf-css-js).
+  * [Display Image With Thymeleaf](https://www.baeldung.com/java-thymeleaf-image).
+* Adobe
+  * [Free logo maker](https://new.express.adobe.com/tools/logo-maker?%24web_only=true&_branch_match_id=1230855816239834151&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zJT0otLkgsyi7ILy7RLU9N0kssKNDLyczL1k%2FVd05LDfcMD%2FIw9UgCAI8wjcoxAAAA).
 * Miscellaneous
-  * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf)
-  * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java)
-  * [SO: Search (via text field and button) in Spring MVC, CrudRepository, Thymeleaf](https://stackoverflow.com/questions/41314724/search-via-text-field-and-button-in-spring-mvc-crudrepository-thymeleaf)
+  * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf).
+  * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java).
+  * [SO: Search (via text field and button) in Spring MVC, CrudRepository, Thymeleaf](https://stackoverflow.com/questions/41314724/search-via-text-field-and-button-in-spring-mvc-crudrepository-thymeleaf).
 
 ### Todo
 

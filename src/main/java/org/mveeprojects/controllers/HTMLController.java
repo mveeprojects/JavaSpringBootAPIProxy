@@ -20,7 +20,7 @@ public class HTMLController {
     @RequestMapping("/")
     public String indexController(Model model) {
         model.addAttribute("title", "Library Customer Summary");
-        return "index_with_search";
+        return "index";
     }
 
     @RequestMapping("/customer/summary")
@@ -31,6 +31,6 @@ public class HTMLController {
         results.add(customerInfo);
         results.add(customerHistory);
         model.addAttribute("search", results);
-        return "index_with_search";
+        return "index";
     }
 }
