@@ -13,17 +13,15 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 ### Running the application
 
-**Docker**
-* Application: `./gradlew build && docker build -t mveeprojects/java_sb_api_proxy . && docker run -d --name JavaSpringBootApiProxy -p 80:8080 mveeprojects/java_sb_api_proxy`.
-* Wiremock: `docker run -d -p 8080:8080 --name wiremock -v ./wiremock/mappings:/home/wiremock/mappings wiremock/wiremock`.
-* Useful command to keep an eye on running docker containers `watch -n1 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'`.
-* To easily clean up the docker container and image, run `docker rm -f $(docker ps -aq) &&  docker rmi -f mveeprojects/java_sb_api_proxy`.
-
 **Docker Compose**
 * `./gradlew build && docker-compose down && docker rmi -f javaspringbootapiproxy-application && docker-compose up -d`.
 * An executable script has been written for convenience, run `./startup.sh` from the root of the project to stop and start the application and wiremock.
-  
+
+A useful command to keep an eye on running docker containers `watch -n1 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'`.
+
 Once running, the app will be available at localhost on port 80, wiremock will be available on port 8080.
+
+To shut everything down without re-running, just run `docker-compose down`.
 
 ### Endpoints
 
