@@ -14,8 +14,8 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 ### Running the application
 
 **Docker Compose**
-* `./gradlew build && docker-compose down && docker rmi -f javaspringbootapiproxy-application && docker-compose up -d`.
-* An executable script has been written for convenience, run `./startup.sh` from the root of the project to stop and start the application and wiremock.
+
+An executable script has been written for convenience, run `./startup.sh` from the root of the project to stop and start the application and wiremock.
 
 A useful command to keep an eye on running docker containers `watch -n1 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"'`.
 
