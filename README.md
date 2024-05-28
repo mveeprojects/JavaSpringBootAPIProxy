@@ -6,6 +6,19 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 ---
 
+## Table of Contents
+
+* [Tech Stack](#tech-stack)
+* [Running the application](#running-the-application)
+* [Application Endpoints](#application-endpoints)
+* [Wiremock Endpoints](#wiremock-endpoints)
+* [References](#references)
+* [Milestones](#milestones)
+  * [MVP1](#mvp1)
+  * [MVP2](#mvp2)
+
+---
+
 ## Tech stack
 * Java 21
 * Gradle 8
@@ -31,7 +44,7 @@ To shut everything down without re-running, just run `docker-compose down`.
 
 ---
 
-## Endpoints
+## Application Endpoints
 
 **Customer Summary Frontend (index.html):** 
 
@@ -43,7 +56,7 @@ Example call with `customer_id` "abc" -> http://localhost/customer/summary?searc
 
 ---
 
-## Wiremock
+## Wiremock Endpoints
 
 Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) directory.
 
@@ -56,7 +69,64 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 
 ---
 
-## Sources
+## Milestones
+
+---
+
+### MVP1
+
+**Initial Setup & Deployment:**
+* [x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
+* [x] Run the application and wiremock together in docker-compose.
+
+**Backend:**
+* [x] Add code to call the external API and send the JSON to the frontend.
+* [x] Render JSON of external API in "pretty print".
+* [x] Handle errors gracefully (404 etc.).
+* [x] Add email to external API response JSON and obfuscate before sending in response to the frontend.
+
+**Frontend:**
+* [ ] Create a simple UI using Thymeleaf.
+  * [x] Form and button for inputting criteria to search by.
+  * [ ] UI needs to be a bit prettier.
+
+**Config:**
+* [x] Move hardcoded references to wiremock url etc and setup overridable config.
+
+**Testing:**
+* [ ] Implement HTMLUnit tests once basic initial UI is in place. 
+* [ ] Look into the best unit testing framework to use for Java/Spring.
+  * [ ] Refactor code to make testing more granular where possible.
+* [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
+  * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there. 
+
+---
+
+### MVP2
+
+**Config:**
+* [ ] Add overridable basic auth config for external API calls.
+  * [ ] Consider how best to check and handle errors in config.
+
+**Backend:**
+* [ ] Call external APIs with basic auth.
+
+**Frontend:**
+* [ ] JSON could be collapsable (default as collapsed).
+* [ ] Add equivalent curl (without auth) to the UI.
+
+---
+
+### MVP3
+
+**Security:**
+  * [ ] SAML/SSO integration.
+  * [ ] User/group-specific access permissions. 
+  * [ ] Authentication & authorisation error handling.
+
+---
+
+## References
 * mveeprojects.wordpress
   * [Good Thymes with Spring Boot](https://mveeprojects.wordpress.com/2017/11/11/good-thymes-with-spring-boot/).
 * Spring.io
@@ -82,50 +152,3 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [YouTube: Spring Security - Lesson 22 - Implementing Single Sign On (SSO)](https://www.youtube.com/watch?v=ApEVbx4Sz_k)
 
 ---
-
-## Milestones
-
----
-
-### MVP1
-
-**Setup/deployment:**
-* [x] Run dockerised wiremock instance with mocked JSON response of an external REST API.
-* [x] Run the application and wiremock together in docker-compose.
-
-**Functionality:**
-* [x] Add code to call the external API and send the JSON to the frontend.
-* [x] Render JSON of external API in "pretty print".
-* [x] Handle errors gracefully (404 etc.).
-* [x] Add email to external API response JSON and obfuscate before sending in response to the frontend.
-
-**Config:**
-* [x] Move hardcoded references to wiremock url etc and setup overridable config.
-
-**UI/UX:**
-* [ ] Create a simple UI using Thymeleaf.
-  * [x] Form and button for inputting criteria to search by.
-  * [ ] UI needs to be a bit prettier.
-
-**Testing:**
-* [ ] Implement HTMLUnit tests once basic initial UI is in place. 
-* [ ] Look into the best unit testing framework to use for Java/Spring.
-  * [ ] Refactor code to make testing more granular where possible.
-* [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
-  * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there. 
-
----
-
-### MVP2
-
-**Config:**
-* [ ] Add overridable basic auth config for external API calls.
-  * [ ] Consider how best to check and handle errors in config.
-
-**Functionality:**
-* [ ] Call external APIs with basic auth.
-
-**UI/UX:**
-* [ ] JSON could be collapsable (default as collapsed).
-* [ ] Add equivalent curl (without auth) to the UI.
-
