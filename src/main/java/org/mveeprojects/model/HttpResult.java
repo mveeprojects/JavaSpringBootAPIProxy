@@ -2,18 +2,22 @@ package org.mveeprojects.model;
 
 public abstract class HttpResult {
 
+    String path;
+
     int statusCode;
 
     String customerId;
 
     String responseBody = "{}";
 
-    public HttpResult(int statusCode, String customer_id) {
+    public HttpResult(String path, int statusCode, String customer_id) {
+        this.path = path;
         this.statusCode = statusCode;
         this.customerId = customer_id;
     }
 
-    public HttpResult(int statusCode, String customer_id, String responseBody) {
+    public HttpResult(String path, int statusCode, String customer_id, String responseBody) {
+        this.path = path;
         this.statusCode = statusCode;
         this.customerId = customer_id;
         this.responseBody = responseBody;
@@ -25,6 +29,10 @@ public abstract class HttpResult {
 
     public void setResponseBody(String responseBody) {
         this.responseBody = responseBody;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public int getStatusCode() {

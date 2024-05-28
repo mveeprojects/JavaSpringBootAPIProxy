@@ -3,14 +3,12 @@
 <head lang="en">
     <title th:text="${title}"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
 </head>
 <body>
 <div class="content">
 
-
     <div class="header">
-<!--        <img th:src="@{images/mveeprojects0.png}" alt="mveeprojects">-->
         <a href="#default" class="logo">Library API: Customer Info Aggregator</a>
         <div class="header-right">
             <a class="active" href="#home">Home</a>
@@ -24,14 +22,16 @@
         <input type="text" name="search" id="search"/>
         <input type="submit" value="Search"/>
         <div th:if="${not #lists.isEmpty(search)}">
-            <h2>Customer Info</h2>
-            <table class="table table-striped">
+            <h2>Summary</h2>
+            <table>
                 <tr>
+                    <th>Path</th>
                     <th>Status Code</th>
                     <th>Customer ID</th>
                     <th>Response Body</th>
                 </tr>
                 <tr th:each="httpresult: ${search}">
+                    <td th:text="${httpresult.getPath}">path</td>
                     <td th:text="${httpresult.getStatusCode}">status code</td>
                     <td th:text="${httpresult.getCustomerId}">customer id</td>
                     <td th:text="${httpresult.getResponseBody}" style="white-space: pre">response body</td>

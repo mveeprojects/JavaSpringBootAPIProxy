@@ -30,12 +30,13 @@ public class ProxyService {
 
     public HttpResult apiResponse(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
-        URI uri = generateTarget(path, id);
-        HttpResult httpResult = getResponse(client, uri, id);
+        HttpResult httpResult = getResponse(client, path, id);
         return checkAndObfuscate(httpResult);
     }
 
-    private HttpResult getResponse(HttpClient client, URI uri, String id) {
+    private HttpResult getResponse(HttpClient client, String path, String id) {
+
+        URI uri = generateTarget(path, id);
 
         String body;
         int statusCode = 0;
@@ -44,21 +45,21 @@ public class ProxyService {
             CompletableFuture<HttpResponse<String>> httpResponseCompletableFuture = client.sendAsync(buildRequest(uri), HttpResponse.BodyHandlers.ofString());
             body = httpResponseCompletableFuture.thenApply(HttpResponse::body).get();
             statusCode = httpResponseCompletableFuture.thenApply(HttpResponse::statusCode).get();
-            return checkHttpResponse(statusCode, id, body);
+            return checkHttpResponse(path, statusCode, id, body);
         } catch (Exception e) {
-            return checkHttpResponse(statusCode, id);
+            return checkHttpResponse(path, statusCode, id);
         }
     }
 
-    private HttpResult checkHttpResponse(int statusCode, String id) {
-        return checkHttpResponse(statusCode, id, "");
+    private HttpResult checkHttpResponse(String path, int statusCode, String id) {
+        return checkHttpResponse(path, statusCode, id, "");
     }
 
-    private HttpResult checkHttpResponse(int statusCode, String id, String body) {
+    private HttpResult checkHttpResponse(String path, int statusCode, String id, String body) {
         return switch (statusCode) {
-            case 200 -> new TwoHundred(id, body);
-            case 404 -> new NotFound(id);
-            default -> new ConnectionIssue(id);
+            case 200 -> new TwoHundred(path, id, body);
+            case 404 -> new NotFound(path, id);
+            default -> new ConnectionIssue(path, id);
         };
     }
 

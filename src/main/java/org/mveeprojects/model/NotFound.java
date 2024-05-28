@@ -1,7 +1,7 @@
 package org.mveeprojects.model;
 
 public class NotFound extends HttpResult {
-    public NotFound(String id) {
-        super(404, id);
+    public NotFound(String path, String id) {
+        super(path, 404, id);
     }
 }
