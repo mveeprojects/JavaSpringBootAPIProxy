@@ -12,10 +12,10 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 * [Running the application](#running-the-application)
 * [Application Endpoints](#application-endpoints)
 * [Wiremock Endpoints](#wiremock-endpoints)
-* [References](#references)
 * [Milestones](#milestones)
   * [MVP1](#mvp1)
   * [MVP2](#mvp2)
+* [References](#references)
 
 ---
 
