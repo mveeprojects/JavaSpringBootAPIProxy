@@ -8,14 +8,14 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 
 ## Table of Contents
 
-* [Tech Stack](#tech-stack)
-* [Running the application](#running-the-application)
-* [Application Endpoints](#application-endpoints)
-* [Wiremock Endpoints](#wiremock-endpoints)
-* [Milestones](#milestones)
-  * [MVP1](#mvp1)
-  * [MVP2](#mvp2)
-* [References](#references)
+* [Tech Stack](#tech-stack).
+* [Running the application](#running-the-application).
+* [Application Endpoints](#application-endpoints).
+* [Wiremock Endpoints](#wiremock-endpoints).
+* [Milestones](#milestones).
+  * [MVP1](#mvp1).
+  * [MVP2](#mvp2).
+* [Sources](#sources).
 
 ---
 
@@ -126,7 +126,7 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 
 ---
 
-## References
+## Sources
 * mveeprojects.wordpress
   * [Good Thymes with Spring Boot](https://mveeprojects.wordpress.com/2017/11/11/good-thymes-with-spring-boot/).
 * Spring.io
