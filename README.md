@@ -133,11 +133,11 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [Spring Boot getting started guide](https://spring.io/guides/gs/spring-boot).
   * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/).
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker).
-  * [HtmlUnit Integration](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-htmlunit.html)
+  * [HtmlUnit Integration](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework/server-htmlunit.html).
 * ThymeLeaf.org
   * [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form).
 * W3 Schools
-  * [HTML Tables](https://www.w3schools.com/html/html_tables.asp)
+  * [HTML Tables](https://www.w3schools.com/html/html_tables.asp).
 * Baeldung
   * [Java HTTP Client](https://www.baeldung.com/java-9-http-client).
   * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements).
@@ -149,6 +149,6 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [SO: Keeping JSON whitepaces (pretty printing) in Thymeleaf](https://stackoverflow.com/questions/62822117/displaying-pretty-printed-json-from-variable-with-java-spring-boot-thymeleaf).
   * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java).
   * [SO: Search (via text field and button) in Spring MVC, CrudRepository, Thymeleaf](https://stackoverflow.com/questions/41314724/search-via-text-field-and-button-in-spring-mvc-crudrepository-thymeleaf).
-  * [YouTube: Spring Security - Lesson 22 - Implementing Single Sign On (SSO)](https://www.youtube.com/watch?v=ApEVbx4Sz_k)
+  * [YouTube: Spring Security - Lesson 22 - Implementing Single Sign On (SSO)](https://www.youtube.com/watch?v=ApEVbx4Sz_k).
 
 ---
