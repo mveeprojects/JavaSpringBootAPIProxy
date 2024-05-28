@@ -33,23 +33,6 @@ Entering a customer id into the search box and clicking search adds the path and
 
 Example call with `customer_id` "abc" -> http://localhost/customer/summary?search=abc.
 
-[//]: # (Add images to the readme when the frontend is complete.)
-[//]: # (Returns all proxied API responses for a given customer_id &#40;"abc", see wiremock endpoints below&#41; to the frontend.)
-[//]: # ()
-[//]: # (<p align="center" width="100%">)
-[//]: # (  <img src="images/index.png" alt="index.png" width="500"/>)
-[//]: # (  <br>)
-[//]: # (  <img src="images/abc_result.png" alt="abc_result.png" width="500"/>)
-[//]: # (  <br>)
-[//]: # (</p>)
-[//]: # ()
-[//]: # (If the given customer_id &#40;"blah" in the example below&#41; does not exist or cannot be returned for any other reason, this is handled and represented in the response.)
-[//]: # ()
-[//]: # (<p align="center" width="100%">)
-[//]: # (  <img src="images/blah_result.png" alt="blah_result.png" width="500"/>)
-[//]: # (  <br>)
-[//]: # (</p>)
-
 ### Wiremock
 
 Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) directory.
@@ -70,6 +53,8 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker).
 * ThymeLeaf.org
   * [Tutorial: Thymeleaf + Spring](https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form).
+* W3 Schools
+  * [HTML Tables](https://www.w3schools.com/html/html_tables.asp)
 * Baeldung
   * [Java HTTP Client](https://www.baeldung.com/java-9-http-client).
   * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements).
