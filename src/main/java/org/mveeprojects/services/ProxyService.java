@@ -27,11 +27,6 @@ public class ProxyService {
 
     public HttpResult apiResponse(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
-        HttpResult httpResult = getResponse(client, path, id);
-        return checkAndObfuscate(httpResult);
-    }
-
-    protected HttpResult getResponse(HttpClient client, String path, String id) {
 
         URI uri;
 
@@ -41,6 +36,12 @@ public class ProxyService {
             return new InputIssue(path, id, e.getReason());
         }
 
+        HttpResult httpResult = getResponse(client, uri, id);
+        return checkAndObfuscate(httpResult);
+    }
+
+    protected HttpResult getResponse(HttpClient client, URI uri, String id) {
+
         String body;
         int statusCode = 0;
 
@@ -48,9 +49,9 @@ public class ProxyService {
             CompletableFuture<HttpResponse<String>> httpResponseCompletableFuture = client.sendAsync(buildRequest(uri), HttpResponse.BodyHandlers.ofString());
             body = httpResponseCompletableFuture.thenApply(HttpResponse::body).get();
             statusCode = httpResponseCompletableFuture.thenApply(HttpResponse::statusCode).get();
-            return checkHttpResponse(path, statusCode, id, body);
+            return checkHttpResponse(uri.getPath(), statusCode, id, body);
         } catch (Exception e) {
-            return checkHttpResponse(path, statusCode, id);
+            return checkHttpResponse(uri.getPath(), statusCode, id);
         }
     }
 
@@ -67,17 +68,9 @@ public class ProxyService {
     }
 
     protected URI generateTarget(String path, String id) throws URISyntaxException {
-
-        if(path.isEmpty()) throw new URISyntaxException(path, "path must not be empty");
-        else if(id.isEmpty()) throw new URISyntaxException(path, "id must not be empty");
-
         String prefix = downstreamConfig.getApiHostname(path) + ":" + downstreamConfig.getApiPort(path) + "/";
-
-        try {
-            return new URI(prefix + path + "/" + id);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+        if (path.isEmpty() || id.isEmpty()) throw new URISyntaxException(path, "path and/or id must not be empty");
+        return new URI(prefix + path + "/" + id);
     }
 
     HttpRequest buildRequest(URI target) {

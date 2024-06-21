@@ -12,6 +12,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 public class ProxyServiceTest {
@@ -29,27 +31,22 @@ public class ProxyServiceTest {
     }
 
     @Test
-    void getResponse_happy_result_generated_with_correct_path() {
-        HttpResult actualResult = testProxyService.getResponse(testHttpClient, "abc", "123");
-        HttpResult expectedResult = new TwoHundred("abc", "123", "{blah}");
-        assertThat(actualResult.getPath()).isEqualTo(expectedResult.getPath());
+    void generateTarget_unhappy_empty_path_throws_URISyntaxException() {
+        URISyntaxException uriSyntaxException = assertThrows(URISyntaxException.class, () ->
+                testProxyService.generateTarget("", "123"));
+        assertEquals("path and/or id must not be empty", uriSyntaxException.getReason());
     }
 
     @Test
-    void getResponse_unhappy_empty_path() {
-        HttpResult actualResult = testProxyService.getResponse(testHttpClient, "", "123");
-        HttpResult expectedResult = new InputIssue("", "123", "path must not be empty");
-        assertThat(actualResult.getPath()).isEqualTo(expectedResult.getPath());
-        assertThat(actualResult.getCustomerId()).isEqualTo(expectedResult.getCustomerId());
-        assertThat(actualResult.getResponseBody()).contains(expectedResult.getResponseBody());
-    }
+    void generateTarget_unhappy_empty_id_throws_URISyntaxException() {
+        URISyntaxException uriSyntaxException = assertThrows(URISyntaxException.class, () ->
+                testProxyService.generateTarget("abc", ""));
+        assertEquals("path and/or id must not be empty", uriSyntaxException.getReason());    }
 
     @Test
-    void getResponse_unhappy_empty_id() {
-        HttpResult actualResult = testProxyService.getResponse(testHttpClient, "abc", "");
-        HttpResult expectedResult = new InputIssue("abc", "", "id must not be empty");
+    void getResponse_happy_result_generated_with_correct_path() throws URISyntaxException {
+        HttpResult actualResult = testProxyService.getResponse(testHttpClient, new URI("http://wiremock:8080/abc/123"), "123");
+        HttpResult expectedResult = new TwoHundred("/abc/123", "123", "{blah}");
         assertThat(actualResult.getPath()).isEqualTo(expectedResult.getPath());
-        assertThat(actualResult.getCustomerId()).isEqualTo(expectedResult.getCustomerId());
-        assertThat(actualResult.getResponseBody()).contains(expectedResult.getResponseBody());
     }
 }

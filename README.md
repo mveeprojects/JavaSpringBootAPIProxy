@@ -91,12 +91,13 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [ ] UI needs to be a bit prettier.
 
 **Config:**
-* [x] Move hardcoded references to wiremock url etc and setup overridable config.
+* [x] Move hardcoded references to wiremock url etc. and setup overridable config.
 
 **Testing:**
+* [x] Look into the best unit testing framework to use for Java/Spring.
+* [ ] (WIP) Implement Unit tests based on the above research
+* [ ] (WIP) Refactor code to make testing more granular where possible.
 * [ ] Implement HTMLUnit tests once basic initial UI is in place. 
-* [ ] Look into the best unit testing framework to use for Java/Spring.
-  * [ ] Refactor code to make testing more granular where possible.
 * [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
   * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there. 
 
@@ -143,6 +144,9 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements).
   * [Add CSS and JS to Thymeleaf](https://www.baeldung.com/spring-thymeleaf-css-js).
   * [Display Image With Thymeleaf](https://www.baeldung.com/java-thymeleaf-image).
+* Testing
+  * [Testing the Web Layer](https://spring.io/guides/gs/testing-web).
+  * [SO: How do you assert that a certain exception is thrown in JUnit tests?](https://stackoverflow.com/questions/156503/how-do-you-assert-that-a-certain-exception-is-thrown-in-junit-tests/2935935#2935935).
 * Adobe
   * [Free logo maker](https://new.express.adobe.com/tools/logo-maker?%24web_only=true&_branch_match_id=1230855816239834151&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zJT0otLkgsyi7ILy7RLU9N0kssKNDLyczL1k%2FVd05LDfcMD%2FIw9UgCAI8wjcoxAAAA).
 * Miscellaneous
