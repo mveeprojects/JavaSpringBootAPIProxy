@@ -1,7 +1,6 @@
 package org.mveeprojects.services;
 
 import org.junit.jupiter.api.Test;
-import org.mveeprojects.config.DownstreamConfig;
 import org.mveeprojects.model.HttpResult;
 import org.mveeprojects.model.InputIssue;
 import org.mveeprojects.model.TwoHundred;
