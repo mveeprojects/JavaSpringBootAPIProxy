@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import org.mveeprojects.config.DownstreamConfig;
-import org.mveeprojects.model.ConnectionIssue;
-import org.mveeprojects.model.HttpResult;
-import org.mveeprojects.model.NotFound;
-import org.mveeprojects.model.TwoHundred;
+import org.mveeprojects.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +31,15 @@ public class ProxyService {
         return checkAndObfuscate(httpResult);
     }
 
-    private HttpResult getResponse(HttpClient client, String path, String id) {
+    protected HttpResult getResponse(HttpClient client, String path, String id) {
 
-        URI uri = generateTarget(path, id);
+        URI uri;
+
+        try {
+            uri = generateTarget(path, id);
+        } catch (URISyntaxException e) {
+            return new InputIssue(path, id, e.getReason());
+        }
 
         String body;
         int statusCode = 0;
@@ -63,7 +66,10 @@ public class ProxyService {
         };
     }
 
-    private URI generateTarget(String path, String id) {
+    protected URI generateTarget(String path, String id) throws URISyntaxException {
+
+        if(path.isEmpty()) throw new URISyntaxException(path, "path must not be empty");
+        else if(id.isEmpty()) throw new URISyntaxException(path, "id must not be empty");
 
         String prefix = downstreamConfig.getApiHostname(path) + ":" + downstreamConfig.getApiPort(path) + "/";
 
@@ -74,7 +80,7 @@ public class ProxyService {
         }
     }
 
-    private HttpRequest buildRequest(URI target) {
+    HttpRequest buildRequest(URI target) {
         return HttpRequest.newBuilder()
                 .uri(target)
                 .timeout(Duration.of(10, SECONDS.toChronoUnit()))
