@@ -46,7 +46,7 @@ To shut everything down without re-running, just run `docker-compose down`.
 
 ## Application Endpoints
 
-**Customer Summary Frontend (index.html):** 
+**Customer Summary Frontend (index.html):**
 
 The default search view of index.html is loaded by accessing http://localhost:80/ (http://localhost/).
 
@@ -95,11 +95,11 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 
 **Testing:**
 * [x] Look into the best unit testing framework to use for Java/Spring.
-* [ ] (WIP) Implement Unit tests based on the above research
-* [ ] (WIP) Refactor code to make testing more granular where possible.
-* [ ] Implement HTMLUnit tests once basic initial UI is in place. 
+* [x] Implement testing for the backend (JUnit).
+  * [x] Refactor code to make testing more granular where possible.
+* [ ] Implement testing for the frontend (HTMLUnit).
 * [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
-  * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there. 
+  * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there.
 
 ---
 
@@ -121,9 +121,9 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 ### MVP3
 
 **Security:**
-  * [ ] SAML/SSO integration.
-  * [ ] User/group-specific access permissions. 
-  * [ ] Authentication & authorisation error handling.
+* [ ] SAML/SSO integration.
+* [ ] User/group-specific access permissions.
+* [ ] Authentication & authorisation error handling.
 
 ---
 
