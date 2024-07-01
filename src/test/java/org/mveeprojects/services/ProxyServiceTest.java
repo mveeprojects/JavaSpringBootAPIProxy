@@ -25,9 +25,6 @@ public class ProxyServiceTest implements CommonTestUtils {
     @Autowired
     ProxyService testProxyService;
 
-    @Autowired
-    HttpUtils httpUtils;
-
     @Test
     void callDownstreamAPI_error_if_given_bad_input_for_uri_construction_junk() {
         HttpResult actual = testProxyService.callDownstreamAPI("blah blah", id);
