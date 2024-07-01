@@ -1,5 +1,7 @@
 package org.mveeprojects.services;
 
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.mveeprojects.CommonTestUtils;
 import org.mveeprojects.model.*;
@@ -13,6 +15,7 @@ import java.net.http.HttpClient;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ProxyServiceTest implements CommonTestUtils {
 
     public ProxyServiceTest() throws URISyntaxException {}

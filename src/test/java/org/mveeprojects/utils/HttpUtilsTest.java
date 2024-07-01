@@ -1,5 +1,7 @@
 package org.mveeprojects.utils;
 
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.mveeprojects.CommonTestUtils;
 import org.mveeprojects.model.*;
@@ -17,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class HttpUtilsTest implements CommonTestUtils {
 
     public HttpUtilsTest() throws URISyntaxException {}
