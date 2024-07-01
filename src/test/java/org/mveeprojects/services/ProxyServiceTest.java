@@ -3,7 +3,6 @@ package org.mveeprojects.services;
 import org.junit.jupiter.api.Test;
 import org.mveeprojects.CommonTestUtils;
 import org.mveeprojects.model.*;
-import org.mveeprojects.utils.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
