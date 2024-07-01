@@ -1,19 +1,24 @@
-echo "Building JAR..."
+set -e
+
+echo "--- Running tests ---"
+./gradlew clean test
+
+echo " --- Building JAR ---"
 ./gradlew build
 
-echo "Shutting down old containers and networks..."
+echo "--- Shutting down old containers and networks ---"
 docker-compose down
 
-echo "Removing old docker image..."
+echo "--- Removing old docker image ---"
 docker rmi -f javaspringbootapiproxy-application
 
-echo "Building and running application and wiremock..."
+echo "--- Building and running application and wiremock ---"
 docker-compose up -d
 
-echo "Startup complete."
+echo "--- Startup complete ---"
 
 sleep 1
 
 docker ps -a
 
-echo "http://localhost/"
+echo "Service is available at: http://localhost/"

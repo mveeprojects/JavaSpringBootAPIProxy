@@ -98,8 +98,7 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * [x] Implement testing for the backend (JUnit).
   * [x] Refactor code to make testing more granular where possible.
 * [ ] Implement testing for the frontend (HTMLUnit).
-* [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
-  * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there.
+* [x] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
 
 ---
 
