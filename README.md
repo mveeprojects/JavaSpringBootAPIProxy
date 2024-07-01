@@ -95,9 +95,9 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 
 **Testing:**
 * [x] Look into the best unit testing framework to use for Java/Spring.
-* [x] Implement testing for the backend (JUnit).
-  * [x] Refactor code to make testing more granular where possible.
-* [ ] Implement testing for the frontend (HTMLUnit).
+* [ ] (WIP) Implement Unit tests based on the above research
+* [ ] (WIP) Refactor code to make testing more granular where possible.
+* [ ] Implement HTMLUnit tests once basic initial UI is in place. 
 * [ ] Ensure that `startup.sh` fails gracefully when the build fails (due to test failures etc.).
   * [ ] Check exit code of last command, if non-zero echo something out to inform the user and stop there. 
 
