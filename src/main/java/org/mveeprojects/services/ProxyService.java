@@ -33,7 +33,7 @@ public class ProxyService {
         try {
             uri = generateTarget(path, id);
         } catch (URISyntaxException e) {
-            return new InputIssue(path, id, e.getReason());
+            return new BadRequestErrorResult(path, id, e.getReason());
         }
 
         HttpResult httpResult = getResponse(client, uri, id);
@@ -55,15 +55,16 @@ public class ProxyService {
         }
     }
 
-    private HttpResult checkHttpResponse(String path, int statusCode, String id) {
+    protected HttpResult checkHttpResponse(String path, int statusCode, String id) {
         return checkHttpResponse(path, statusCode, id, "");
     }
 
-    private HttpResult checkHttpResponse(String path, int statusCode, String id, String body) {
+    protected HttpResult checkHttpResponse(String path, int statusCode, String id, String body) {
         return switch (statusCode) {
-            case 200 -> new TwoHundred(path, id, body);
-            case 404 -> new NotFound(path, id);
-            default -> new ConnectionIssue(path, id);
+            case 200 -> new TwoHundredResult(path, id, body);
+            case 404 -> new NotFoundErrorResult(path, id);
+            case 424 -> new DownstreamServiceErrorResult(path, id);
+            default -> new UnknownErrorResult(path, id);
         };
     }
 
@@ -81,7 +82,7 @@ public class ProxyService {
                 .build();
     }
 
-    private HttpResult checkAndObfuscate(HttpResult httpResult) {
+    protected HttpResult checkAndObfuscate(HttpResult httpResult) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode responseBody = mapper.readTree(httpResult.getResponseBody());
