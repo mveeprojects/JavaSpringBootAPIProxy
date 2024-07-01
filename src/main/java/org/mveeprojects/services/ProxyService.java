@@ -17,7 +17,7 @@ public class ProxyService {
     @Autowired
     HttpUtils httpUtils;
 
-    public HttpResult apiResponse(String path, String id) {
+    public HttpResult callDownstreamAPI(String path, String id) {
         HttpClient client = HttpClient.newHttpClient();
 
         URI uri;
@@ -26,6 +26,8 @@ public class ProxyService {
             uri = httpUtils.generateTarget(path, id);
         } catch (URISyntaxException e) {
             return new BadRequestErrorResult(path, id, e.getReason());
+        } catch (NullPointerException npe) {
+            return new BadRequestErrorResult("", id, "Path cannot contain null elements");
         }
 
         HttpResult httpResult = getResponse(client, uri, id);

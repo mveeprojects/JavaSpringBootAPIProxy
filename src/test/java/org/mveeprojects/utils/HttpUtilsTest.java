@@ -37,14 +37,14 @@ public class HttpUtilsTest implements CommonTestUtils {
     void generateTarget_empty_path_throws_URISyntaxException() {
         URISyntaxException uriSyntaxException = assertThrows(URISyntaxException.class, () ->
                 httpUtils.generateTarget("", id));
-        assertEquals("path and/or id must not be empty", uriSyntaxException.getReason());
+        assertEquals("Path and/or id must not be empty", uriSyntaxException.getReason());
     }
 
     @Test
     void generateTarget_empty_id_throws_URISyntaxException() {
         URISyntaxException uriSyntaxException = assertThrows(URISyntaxException.class, () ->
                 httpUtils.generateTarget("abc", ""));
-        assertEquals("path and/or id must not be empty", uriSyntaxException.getReason());
+        assertEquals("Path and/or id must not be empty", uriSyntaxException.getReason());
     }
 
     @Test

@@ -24,7 +24,7 @@ public class HttpUtils {
 
     public URI generateTarget(String path, String id) throws URISyntaxException {
         String prefix = downstreamConfig.getApiHostname(path) + ":" + downstreamConfig.getApiPort(path) + "/";
-        if (path.isEmpty() || id.isEmpty()) throw new URISyntaxException(path, "path and/or id must not be empty");
+        if (path.isEmpty() || id.isEmpty()) throw new URISyntaxException(path, "Path and/or id must not be empty");
         return new URI(prefix + path + "/" + id);
     }
 

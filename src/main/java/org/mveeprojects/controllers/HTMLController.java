@@ -25,8 +25,8 @@ public class HTMLController {
 
     @RequestMapping("/customer/summary")
     public String customerSummaryController(@RequestParam String search, Model model) {
-        HttpResult customerInfo = proxyService.apiResponse("customer/info", search);
-        HttpResult customerHistory = proxyService.apiResponse("customer/history", search);
+        HttpResult customerInfo = proxyService.callDownstreamAPI("customer/info", search);
+        HttpResult customerHistory = proxyService.callDownstreamAPI("customer/history", search);
         List<HttpResult> results = new ArrayList<>();
         results.add(customerInfo);
         results.add(customerHistory);
