@@ -15,6 +15,7 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 * [Milestones](#milestones).
   * [MVP1](#mvp1).
   * [MVP2](#mvp2).
+  * [MVP3](#mvp3).
 * [Sources](#sources).
 
 ---
@@ -146,6 +147,8 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
 * Testing
   * [Testing the Web Layer](https://spring.io/guides/gs/testing-web).
   * [SO: How do you assert that a certain exception is thrown in JUnit tests?](https://stackoverflow.com/questions/156503/how-do-you-assert-that-a-certain-exception-is-thrown-in-junit-tests/2935935#2935935).
+  * [SO: Best way to test Thymeleaf form / Spring MVC Controller interaction](https://stackoverflow.com/questions/24171876/best-way-to-test-thymeleaf-form-spring-mvc-controller-interaction).
+    * [petrikainulainen.net: Integration Testing of Spring MVC Applications: Forms](https://www.petrikainulainen.net/programming/spring-framework/integration-testing-of-spring-mvc-applications-forms/).
 * Adobe
   * [Free logo maker](https://new.express.adobe.com/tools/logo-maker?%24web_only=true&_branch_match_id=1230855816239834151&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXT0zJT0otLkgsyi7ILy7RLU9N0kssKNDLyczL1k%2FVd05LDfcMD%2FIw9UgCAI8wjcoxAAAA).
 * Miscellaneous
@@ -153,5 +156,6 @@ Mappings are stored as JSON under the [wiremock/mappings](./wiremock/mappings) d
   * [SO: Create JSON object using Jackson in Java](https://stackoverflow.com/questions/40967921/create-json-object-using-jackson-in-java).
   * [SO: Search (via text field and button) in Spring MVC, CrudRepository, Thymeleaf](https://stackoverflow.com/questions/41314724/search-via-text-field-and-button-in-spring-mvc-crudrepository-thymeleaf).
   * [YouTube: Spring Security - Lesson 22 - Implementing Single Sign On (SSO)](https://www.youtube.com/watch?v=ApEVbx4Sz_k).
+  * [SO: What's the difference between implementation, api and compile in Gradle?](https://stackoverflow.com/a/44493379/3059314).
 
 ---
