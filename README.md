@@ -4,6 +4,8 @@
 
 Stateless UI/Proxy application used to call a series of external REST APIs and present the result back to the user.
 
+![high-level-architecture-diagram](images/readme/highlevelarchitecture.png)
+
 ---
 
 ## Table of Contents
@@ -21,7 +23,7 @@ Stateless UI/Proxy application used to call a series of external REST APIs and p
 ---
 
 ## Tech stack
-* Java 21
+* Java 21 (requires Java17+ to run)
 * Gradle 8
 * Spring Boot
 * Thymeleaf
