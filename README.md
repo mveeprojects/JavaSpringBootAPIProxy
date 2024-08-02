@@ -1,4 +1,4 @@
-# Java Spring Boot API Proxy
+# Java Spring Boot API Proxy (Auxilium).
 
 ---
 
